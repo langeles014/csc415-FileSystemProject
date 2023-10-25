@@ -1,5 +1,9 @@
 # csc415-FileSystemProject
+
 **Team Name: Bierman's Favs**
+
+---
+
 **Team Members:**
 - Luis Angeles, Student ID#
 - Hamed Djouadi, Student ID#
@@ -23,15 +27,30 @@ https://github.com/langeles014/csc415-FileSystemProject
 
 2. **Free Space Management:**
    - **Initialization:**
-     [Explain how the free space is initialized, e.g., using a bitmap or other data structure.]
+     Initialize bitmap with all 1s bitmap[64] = {1}
    - **Allocation Procedure:**
-     [Describe the procedure for allocating free space blocks.]
+     When we allocate, we are going to use a for loop to find contiguous 0 bits within the bitmap.
+     And set corresponding bits as 0 to showcase (flag) blocks as occupied.
+     Whenever data is deleted or moved around, we set that respective bit to 1 to identify when it is free again
+
 
 3. **Root Directory Initialization:**
    - **Special Entries (. and ..):**
-     [Explain how the special entries "." and ".." are initialized in the root directory.]
+   - Set the first entry (`dir[0]`) as the current directory ("." entry).
+     - Name: "."
+     - Size: Total size of directory entries.
+     - Location: `startBlock`
+     - Flags: Indicate it's a directory.
+     - Timestamps: Set creation, modification, and access timestamps.
+   - Set the second entry (`dir[1]`) as the parent directory (".." entry).
+     - Name: ".."
+     - Size: Same as the parent directory size.
+     - Location: Same as the parent directory location.
+     - Flags: Inherit from the parent directory.
+     - Timestamps: Inherit from the parent directory.
+
    - **Other Directory Entries:**
-     [Describe how other directory entries are initialized.]
+   - Write the initialized directory entries to the allocated blocks starting from `startBlock` using (LBA) function.
 
 4. **HexDump of Volume File:**
    [Include a HexDump of the volume file showing the VCB, FreeSpace, and complete root directory.]

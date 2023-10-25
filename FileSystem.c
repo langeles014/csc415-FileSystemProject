@@ -26,9 +26,15 @@ void initializeRootDirectory(DirectoryEntry* rootDir, int blockSize) {
     // we will use blockSize to calculate how many directory entries we can fit in a block
 }
 
-void writeToDisk(void* data, int size, int location) {
+// we probably need to use these similar to assignment 5
+b_io_fd b_open(char *filename, int flags)
+int b_read(b_io_fd fd, char *buffer, int count)
+void b_write(void* data, int size, int location) {
     // going to have to write on disk
+    // an additional function since we are the ones writing to disk
 }
+int b_close(b_io_fd fd)
+
 
 int main() {
     // Initialize Volume Control Block
