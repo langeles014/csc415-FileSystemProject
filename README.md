@@ -1,34 +1,72 @@
 # csc415-FileSystemProject
-1. Calculating Required Blocks:
-   - `bytesNeeded` calculates the total bytes required for the directory entries.
-   - `blocksNeeded` calculates how many blocks are required to store these bytes.
+**Team Name: Bierman's Favs**
+**Team Members:**
+- Luis Angeles, Student ID#
+- Hamed Djouadi, Student ID#
+- Brenden Lapuz, Student ID#
+- John Cueva, Student ID#
 
-2. Allocating Blocks:
-   - `startBlock` is the starting block number allocated from the free space using `allocBlocks(blocksNeeded)`.
-   - Ensure error handling for the allocation process.
+**GitHub Repository:**
+https://github.com/langeles014/csc415-FileSystemProject
 
- 3. Initializing Directory Entries:
-   - Loop through `actualDirEntries` and initialize each directory entry to a known state (empty name and unused).
-   - Optional: `used` flag could be helpful for tracking used entries.
+---
 
- 4. Setting Special Entries (Dot and DotDot):
-   - Set the first entry (`dir[0]`) as the current directory ("." entry).
-     - Name: "."
-     - Size: Total size of directory entries.
-     - Location: `startBlock`
-     - Flags: Indicate it's a directory.
-     - Timestamps: Set creation, modification, and access timestamps.
-   - Set the second entry (`dir[1]`) as the parent directory (".." entry).
-     - Name: ".."
-     - Size: Same as the parent directory size.
-     - Location: Same as the parent directory location.
-     - Flags: Inherit from the parent directory.
-     - Timestamps: Inherit from the parent directory.
+**Project Overview:**
 
- 5. Writing Directory to Disk:
-   - Write the initialized directory entries to the allocated blocks starting from `startBlock` using a Low-Level Block Access (LBA) function.
 
- 6. Memory Cleanup and Return:
-   - Free the memory allocated for the directory entries using `free(dir)`.
-   - Return the `startBlock` of the root directory, which is essential for future operations on the file system.
+---
+
+**Volume Formatting:**
+
+1. **Volume Control Block (VCB) Structure:**
+   [Describe the structure of your VCB, including fields such as volume name, total blocks, block size, etc.]
+
+2. **Free Space Management:**
+   - **Initialization:**
+     [Explain how the free space is initialized, e.g., using a bitmap or other data structure.]
+   - **Allocation Procedure:**
+     [Describe the procedure for allocating free space blocks.]
+
+3. **Root Directory Initialization:**
+   - **Special Entries (. and ..):**
+     [Explain how the special entries "." and ".." are initialized in the root directory.]
+   - **Other Directory Entries:**
+     [Describe how other directory entries are initialized.]
+
+4. **HexDump of Volume File:**
+   [Include a HexDump of the volume file showing the VCB, FreeSpace, and complete root directory.]
+
+---
+
+**Team Work Division:**
+
+| Team Member    | Components Worked On              |
+| -------------- | --------------------------------- |
+| Brenden Lapuz  | VCB Structure                     |
+| Hamed Djouadi  | Free Space Management             |
+| Luis Angeles   | Root Directory Initialization     |
+| John Cueva     | HexDump, Documentation            |
+
+---
+
+**Team Collaboration:**
+
+
+---
+
+**Challenges and Resolutions:**
+
+
+---
+
+**Conclusion:**
+
+
+---
+
+**Attachments:**
+- HexDump of Volume File
+- Code Repository Link (GitHub)
+
+---
 
